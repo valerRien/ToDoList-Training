@@ -1,7 +1,8 @@
 package pet.todolist.service;
 
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pet.todolist.entity.TaskEntity;
 import pet.todolist.entity.UserEntity;
 import pet.todolist.repository.UserRepository;
 
@@ -9,10 +10,14 @@ import java.util.List;
 
 
 @Service
-@AllArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public UserEntity getUser(int id) {
         return userRepository.findById(id).orElse(null);

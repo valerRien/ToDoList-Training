@@ -1,27 +1,22 @@
 package pet.todolist.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.sql.Date;
+import java.util.Objects;
 
 
-@Data
 @Entity
 @Table(name = "task")
-@NoArgsConstructor
-@AllArgsConstructor
 public class TaskEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @ToString.Exclude
     private int id;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private UserEntity owner;
@@ -34,4 +29,47 @@ public class TaskEntity {
 
     @Column(name = "is_done")
     private boolean isDone;
+
+    public TaskEntity() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public UserEntity getOwner() {
+        return owner;
+    }
+
+    public void setOwner(UserEntity owner) {
+        this.owner = owner;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
+    }
 }
