@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pet.todolist.entity.TaskEntity;
 import pet.todolist.entity.UserEntity;
-import pet.todolist.model.Task;
 import pet.todolist.repository.TaskRepository;
 import pet.todolist.repository.UserRepository;
 
